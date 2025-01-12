@@ -5,6 +5,7 @@ const connectDB = require("./config/db");
 const cookieParser = require("cookie-parser");
 const elevenRoutes = require("./routes/v1/elevenLabRoutes");
 const chatRoutes = require("./routes/v1/chat");
+const authRoutes = require("./routes/v1/authRoutes");
 const cors = require("cors");
 
 connectDB();
@@ -30,6 +31,7 @@ app.get("/api", (req, res) => {
 });
 app.use("/api/v1/conversation", elevenRoutes);
 app.use("/api/v1", chatRoutes);
+app.use("/api/v1/auth", authRoutes);
 
 const PORT = process.env.PORT || 3000;
 

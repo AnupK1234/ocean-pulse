@@ -14,33 +14,37 @@ import Volunteer from "./pages/Volunteer";
 import Quiz from "./pages/Quiz";
 import MarineLife from "./pages/MarineLife";
 import AiEducator from "./pages/AiEducator";
+import { Provider } from "react-redux";
+import store from "./features/store";
 
 const queryClient = new QueryClient();
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Navigation />
-        <main className="min-h-screen pt-16">
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/calculator" element={<Calculator />} />
-            <Route path="/volunteer" element={<Volunteer />} />
-            <Route path="/quiz" element={<Quiz />} />
-            <Route path="/marine-life" element={<MarineLife />} />
-            <Route path="/ai-educator" element={<AiEducator />} />
-          </Routes>
-        </main>
-        <ChatBot />
-        <Footer />
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+  <Provider store={store}>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Navigation />
+          <main className="min-h-screen pt-16">
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/calculator" element={<Calculator />} />
+              <Route path="/volunteer" element={<Volunteer />} />
+              <Route path="/quiz" element={<Quiz />} />
+              <Route path="/marine-life" element={<MarineLife />} />
+              <Route path="/ai-educator" element={<AiEducator />} />
+            </Routes>
+          </main>
+          <ChatBot />
+          <Footer />
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  </Provider>
 );
 
 export default App;

@@ -2,10 +2,14 @@ import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "./ui/button";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../features/authSlice";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector((state) => state.auth.token);
 
   const links = [
     { href: "/", label: "Home" },
@@ -14,7 +18,11 @@ const Navigation = () => {
     { href: "/quiz", label: "Quiz" },
   ];
 
-  const isActive = (path: string) => location.pathname === path;
+  const isActive = (path) => location.pathname === path;
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
 
   return (
     <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-lg border-b border-ocean-100 z-50">
@@ -22,7 +30,9 @@ const Navigation = () => {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
-              <span className="text-2xl font-bold text-ocean-600">OceanPulse</span>
+              <span className="text-2xl font-bold text-ocean-600">
+                OceanPulse
+              </span>
             </Link>
           </div>
 
@@ -41,11 +51,17 @@ const Navigation = () => {
                 {link.label}
               </Link>
             ))}
-            <Link to="/login">
-              <Button variant="outline" className="ml-4">
-                Login
+            {isLoggedIn ? (
+              <Button variant="outline" className="ml-4" onClick={handleLogout}>
+                Logout
               </Button>
-            </Link>
+            ) : (
+              <Link to="/login">
+                <Button variant="outline" className="ml-4">
+                  Login
+                </Button>
+              </Link>
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -84,13 +100,25 @@ const Navigation = () => {
                 {link.label}
               </Link>
             ))}
-            <Link
-              to="/login"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-ocean-50"
-              onClick={() => setIsOpen(false)}
-            >
-              Login
-            </Link>
+            {isLoggedIn ? (
+              <button
+                onClick={() => {
+                  handleLogout();
+                  setIsOpen(false);
+                }}
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-ocean-50"
+              >
+                Logout
+              </button>
+            ) : (
+              <Link
+                to="/login"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-ocean-50"
+                onClick={() => setIsOpen(false)}
+              >
+                Login
+              </Link>
+            )}
           </div>
         </div>
       )}

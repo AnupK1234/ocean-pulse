@@ -3,23 +3,29 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser } from "../features/authSlice.js";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Implement login logic
-    console.log("Login attempt:", { email, password });
+    dispatch(loginUser({ email, password }));
+    navigate("/")
   };
 
   return (
     <div className="container mx-auto px-4 py-8">
       <Card className="max-w-md mx-auto">
         <CardHeader>
-          <CardTitle className="text-2xl text-center text-ocean-600">Login to OceanPulse</CardTitle>
+          <CardTitle className="text-2xl text-center text-ocean-600">
+            Login to OceanPulse
+          </CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -43,7 +49,10 @@ const Login = () => {
                 required
               />
             </div>
-            <Button type="submit" className="w-full bg-ocean-600 hover:bg-ocean-700">
+            <Button
+              type="submit"
+              className="w-full bg-ocean-600 hover:bg-ocean-700"
+            >
               Login
             </Button>
             <p className="text-center text-sm text-gray-600">
