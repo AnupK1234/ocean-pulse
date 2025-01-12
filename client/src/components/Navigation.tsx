@@ -13,7 +13,7 @@ const Navigation = () => {
 
   const links = [
     { href: "/", label: "Home" },
-    { href: "/calculator", label: "Water Calculator" },
+    { href: "/calculator", label: "Water Footprint Calculator" },
     { href: "/volunteer", label: "Volunteer" },
     { href: "/quiz", label: "Quiz" },
   ];

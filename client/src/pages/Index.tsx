@@ -67,7 +67,7 @@ const Index = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <Card className="p-6 hover:shadow-lg transition-shadow">
             <DropletIcon className="w-12 h-12 text-ocean-500 mb-4" />
-            <h3 className="text-xl font-semibold mb-2">Water Calculator</h3>
+            <h3 className="text-xl font-semibold mb-2">Water Footprint Calculator</h3>
             <p className="text-gray-600">
               Track your daily water usage and get personalized tips to reduce
               consumption.
