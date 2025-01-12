@@ -8,6 +8,7 @@ const chatRoutes = require("./routes/v1/chat");
 const authRoutes = require("./routes/v1/authRoutes");
 const aiRoutes = require("./routes/v1/aiRoutes");
 const cors = require("cors");
+const http = require("http");
 
 connectDB();
 const app = express();
@@ -40,4 +41,9 @@ const PORT = process.env.PORT || 3000;
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
+
+  setInterval(() => {
+    http.get(`http://ocean-pulse-be.onrender.com`); 
+    console.log("Pinged the server to keep it alive.");
+  }, 13 * 60 * 1000); // 13 minutes interval
 });
