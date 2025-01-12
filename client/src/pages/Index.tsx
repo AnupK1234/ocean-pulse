@@ -100,6 +100,22 @@ const Index = () => {
               </p>
             </Card>
           </Link>
+
+          <Link to="/ai-educator">
+            <Card className="p-6 hover:shadow-lg transition-shadow">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/4060/4060166.png"
+                alt="AI Educator Avatar"
+                className="w-12 h-12 rounded-full mb-4"
+              />
+              <h3 className="text-xl font-semibold mb-2">AI Educator Avatar</h3>
+              <p className="text-gray-600">
+                Get personalized educational content from our AI-powered
+                educator to learn about ocean conservation and sustainable
+                practices.
+              </p>
+            </Card>
+          </Link>
         </div>
       </div>
     </div>
