@@ -1,9 +1,10 @@
 require("dotenv").config();
-const express = require('express');
+const express = require("express");
 const morgan = require("morgan");
 const connectDB = require("./config/db");
 const cookieParser = require("cookie-parser");
 const elevenRoutes = require("./routes/v1/elevenLabRoutes");
+const chatRoutes = require("./routes/v1/chat");
 const cors = require("cors");
 
 connectDB();
@@ -20,16 +21,15 @@ app.use(
   })
 );
 
-
-app.get('/', (req, res) => {
-  res.send('Hello, World!');
+app.get("/", (req, res) => {
+  res.send("Hello, World!");
 });
 
-
-app.get('/api', (req, res) => {
-  res.json({ message: 'Welcome to the API route!' });
+app.get("/api", (req, res) => {
+  res.json({ message: "Welcome to the API route!" });
 });
 app.use("/api/v1/conversation", elevenRoutes);
+app.use("/api/v1", chatRoutes);
 
 const PORT = process.env.PORT || 3000;
 
