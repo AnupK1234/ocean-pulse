@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import Avatar3 from "@/components/ElevenLab_Simli/Avatar3";
 
 const AiEducator = () => {
   const [currentTip, setCurrentTip] = useState(0);
@@ -34,13 +35,18 @@ const AiEducator = () => {
       <div className="max-w-2xl mx-auto">
         <div className="flex items-center gap-4 mb-8">
           <Avatar className="w-20 h-20">
-            <AvatarImage src="/placeholder.svg" />
+            <AvatarImage src="https://saasaitools.com/wp-content/uploads/2023/12/gliglish-avatar-brunette-square-new-indigo.png" />
             <AvatarFallback>AI</AvatarFallback>
           </Avatar>
           <div>
             <h2 className="text-2xl font-bold text-ocean-800">AquaTeach</h2>
             <p className="text-ocean-600">Your AI Water Conservation Guide</p>
           </div>
+        </div>
+
+        {/* Avatar3 Component Displayed Here */}
+        <div className="mb-8 bg-blue-300">
+          <Avatar3 />
         </div>
 
         <Card className="p-6 mb-8 bg-gradient-to-br from-ocean-50 to-white">
@@ -50,23 +56,6 @@ const AiEducator = () => {
             Next Tip
           </Button>
         </Card>
-
-        <div className="grid gap-6">
-          <Card className="p-6 bg-white">
-            <h3 className="text-lg font-semibold mb-3 text-ocean-800">Did You Know?</h3>
-            <p className="text-ocean-700">
-              The average American family uses more than 300 gallons of water per day at home.
-              About 70% of this use occurs indoors.
-            </p>
-          </Card>
-
-          <Card className="p-6 bg-white">
-            <h3 className="text-lg font-semibold mb-3 text-ocean-800">Interactive Learning</h3>
-            <p className="text-ocean-700">
-              Take our water conservation quiz to test your knowledge and earn badges!
-            </p>
-          </Card>
-        </div>
       </div>
     </div>
   );
